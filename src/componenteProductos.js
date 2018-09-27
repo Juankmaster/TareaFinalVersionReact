@@ -10,29 +10,59 @@ class ComponenteProductos extends Component {
     super();
 
       this.state = {
-          cantidadProducto:0
+          cantidadProducto:0,
+          productos: [],
+          productosMostrar:[]
+
       }
 
-    this.handleChangeFiltro= this.handleChangeFiltro.bind(this);
-    this.handleChangeCantidad= this.handleChangeCantidad.bind(this);
-    this.detalleProducto= this.detalleProducto.bind(this);
+  this.handleChangeFiltro= this.handleChangeFiltro.bind(this);
+  this.handleChangeCantidad= this.handleChangeCantidad.bind(this);
+  this.detalleProducto= this.detalleProducto.bind(this);
+  }
+
+  //Funcion manejo evento para asignar la cantidad de producto seleccionado
+  handleChangeCantidad(event) {
+
+    this.setState({
+      cantidadProducto:parseInt(event.target.value, 10)
+    });
 
   }
+
+
 //Funcion manejo del evento buscar para el filtro de productos
   handleChangeFiltro(event) {
 
-    console.log("Evento Filtro")
+      var textoFiltro = event.target.value
+
+      if (textoFiltro.length > 0) {
+
+        const productosMostrar = this.state.productos.filter(
+          product => product.nombre.toLowerCase().indexOf(textoFiltro.toLowerCase()) >=0
+        )
+
+         this.setState({productosMostrar:productosMostrar})
+          console.log(textoFiltro)
+     } else {
+
+         this.setState({productosMostrar:this.state.productos})
+     }
 
   }
-//Funcion manejo evento para asignar la cantidad de producto seleccionado
-  handleChangeCantidad(event) {
-      console.log("Evento Cantidad")
 
-      this.setState({
-        cantidadProducto:parseInt(event.target.value, 10)
-      });
+//Funcion para llamar la funcion una ves este cargado el componente
+  componentDidMount(){
+    this.cargarProductos()
+  }
+
+//Funcion para cargar los productos en el catalogo
+  cargarProductos() {
+
 
   }
+
+
 //Funcion para mostrar el producto seleccionado en detalle
   detalleProducto() {
     ReactDOM.render(

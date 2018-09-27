@@ -5,7 +5,7 @@ import './componenteLogin.css'
 
 class ComponenteLogin extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 //Estado del componente
      this.state = {
@@ -15,7 +15,7 @@ class ComponenteLogin extends Component {
        validarCampoClave: true,
 
      };
-     //Configuracion del scope de las funciones
+//Configuracion del scope de las funciones
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -51,7 +51,7 @@ class ComponenteLogin extends Component {
      }else{
         this.setState({validarCampoClave:true})
      }
-
+//Pendiente por realizar
      if(validarFormulario){
         ReactDOM.render(
           <ComponenteCatalogo/>,

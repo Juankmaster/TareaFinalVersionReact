@@ -40,9 +40,9 @@ class ComponenteCatalogo extends Component {
                 </Row>
 
               </Grid>
-             </div>
+            </div>
     )
   }
 
 }
-export default ComponenteCatalogo;
+export default ComponenteCatalogo

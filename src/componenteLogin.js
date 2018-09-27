@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import ComponenteCatalogo  from './componenteCatalogo.js';
 import './componenteLogin.css'
 
 class ComponenteLogin extends Component {
@@ -34,21 +36,30 @@ class ComponenteLogin extends Component {
   handleSubmit(event) {
 
      event.preventDefault();
+     var validarFormulario = true
 
      if(this.state.usuario === ''){
         this.setState({validarCampoUsuario:false})
+        validarFormulario=false;
      }else{
         this.setState({validarCampoUsuario:true})
      };
 
      if(this.state.clave === ''){
         this.setState({validarCampoClave:false})
+        validarFormulario=false;
      }else{
         this.setState({validarCampoClave:true})
      }
 
- }
+     if(validarFormulario){
+        ReactDOM.render(
+          <ComponenteCatalogo/>,
+          document.getElementById('root')
+        );
+     }
 
+ }
 
   render() {
 

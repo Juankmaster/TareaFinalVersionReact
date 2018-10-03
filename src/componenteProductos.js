@@ -1,35 +1,24 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import ComponenteDetalleProductos from './componenteDetalleProductos.js';
-import { Grid, Row, Col, Button, Thumbnail } from 'react-bootstrap';
+import ComponenteItemProducto from './componenteItemProducto.js';
+import { Grid, Row, Col } from 'react-bootstrap';
 import './componenteProductos.css';
+import   Producto from './modelos/Producto.js';
 
 class ComponenteProductos extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
       this.state = {
-          cantidadProducto:0,
+          saludo:"hola cabron",
           productos: [],
           productosMostrar:[]
 
       }
 
   this.handleChangeFiltro= this.handleChangeFiltro.bind(this);
-  this.handleChangeCantidad= this.handleChangeCantidad.bind(this);
-  this.detalleProducto= this.detalleProducto.bind(this);
-  }
-
-  //Funcion manejo evento para asignar la cantidad de producto seleccionado
-  handleChangeCantidad(event) {
-
-    this.setState({
-      cantidadProducto:parseInt(event.target.value, 10)
-    });
 
   }
-
 
 //Funcion manejo del evento buscar para el filtro de productos
   handleChangeFiltro(event) {
@@ -53,26 +42,55 @@ class ComponenteProductos extends Component {
 
 //Funcion para llamar la funcion una ves este cargado el componente
   componentDidMount(){
-    this.cargarProductos()
+
+    this.cargarProductos();
   }
 
 //Funcion para cargar los productos en el catalogo
   cargarProductos() {
 
+    fetch('https://tareafinal-8729a.firebaseio.com/productos.json')
 
-  }
+        .then(response => response.json())
+          .then(responseJson => {
 
 
-//Funcion para mostrar el producto seleccionado en detalle
-  detalleProducto() {
-    ReactDOM.render(
-      <ComponenteDetalleProductos/>,
-        document.getElementById('contenido')
-    );
+            if (responseJson.error) {
 
-  }
+                 alert("Error al Cargar Productos")
+
+            } else {
+
+              const products= [];
+
+               for ( let product of responseJson) {
+
+                var  produc = new Producto();
+                produc.id = product.id;
+                produc.nombre = product.nombre;
+                produc.img = product.img;
+                produc.precio = product.precio;
+                produc.stock = product.stock;
+
+                products.push(produc);
+
+                }
+                this.setState({
+                  productos:products,
+                  productosMostrar:products
+                })
+               }
+            })
+            .catch(error => {
+
+            console.error(error);
+
+    })
+
+   }
 
   render(){
+
 
     return(
             <Grid>
@@ -93,27 +111,7 @@ class ComponenteProductos extends Component {
                 </Row>
 
                 <Row>
-                  <Col lg={3} md={4}>
-                      <Thumbnail src="/thumbnaildiv.png" alt="242x200">
-                          <h3>Nombre</h3>
-                            <p>Precio:$</p>
-                              <p>Stock: </p>
-                              <p>
-                                  <Button bsStyle="primary" onClick={this.detalleProducto}>
-                                     Ver Mas
-                                  </Button>  &nbsp;&nbsp;
-
-                                  <Button bsStyle="warning">Añadir</Button>
-                                  <input
-                                      type="number"
-                                      max='10'
-                                      min='0'
-                                      value={this.state.cantidadProducto}
-                                      onChange={this.handleChangeCantidad}
-                                   />
-                               </p>
-                        </Thumbnail>
-                    </Col>
+                   <ComponenteItemProducto prod={this.state.productosMostrar}/>
                 </Row>
             </Grid>
       );

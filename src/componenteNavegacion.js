@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ComponenteLogin from './componenteLogin.js';
+import ComponentServices from './servicios/componentServices.js';
 import ComponenteCarroCompras from './componenteCarroCompras.js';
 import  './componenteNavegacion.css';
-import carro from './img/cart.png';
-import salir from './img/logout.png';
+import carro from './assets/cart.png';
+import salir from './assets/logout.png';
 import { Navbar, Nav, NavItem }  from 'react-bootstrap';
 
 class ComponenteNavegacion extends Component {
 
-  constructor() {
-    super();
+  servicio = ComponentServices.getInstance();
+
+  constructor(props) {
+    super(props);
 
       this.carroCompras = this.carroCompras.bind(this);
       this.salir = this.salir.bind(this);
+      this.servicio.componenteNavegacion = this;
   }
 
    carroCompras(){
       ReactDOM.render(
-        <ComponenteCarroCompras/>,
+        <ComponenteCarroCompras items={this.servicio.productosCarroCompras}/>,
         document.getElementById('contenido')
       )
    }
@@ -28,9 +32,8 @@ class ComponenteNavegacion extends Component {
        document.getElementById('root')
      );
    }
-
-
   render(){
+    console.log(this.servicio.productosCarroCompras)
 
     return(
 
@@ -44,6 +47,11 @@ class ComponenteNavegacion extends Component {
                 <Nav pullRight >
                     <NavItem onClick={this.carroCompras}>
                       <img  className="items" src={carro}  alt="" height="30"/>
+                      { this.servicio.productosCarroCompras.length > 0 &&
+                        <span className="badge badge-danger">
+                          {this.servicio.productosCarroCompras.length}
+                        </span>
+                      }
                     </NavItem>
 
                     <NavItem onClick={this.salir} >

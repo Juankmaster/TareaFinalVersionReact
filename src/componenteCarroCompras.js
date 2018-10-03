@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
 import {Row, Col, Grid, Button, Thumbnail,ListGroup,ListGroupItem } from 'react-bootstrap';
+import ComponentServices from './servicios/componentServices';
 import './componenteCarroCompras.css';
 
 class ComponenteCarroCompras extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    var servicio = new ComponentServices();
+
+    this.state={
+       productosCarroCompra: servicio
+    }
 
   }
 
   render(){
-    return(
 
+    console.log(this.props.items)
+
+
+    return(
       <Grid>
           <Row>
 
             <Col lg={12} md={4} className="divisor">
-              <h2>Carrito de Compras</h2>
+              <h2>{this.props.titulo}</h2>
             </Col>
 
 
@@ -38,8 +48,12 @@ class ComponenteCarroCompras extends Component {
                    <Button bsStyle="primary" onClick={this.detalleProducto}>
                       Pagar
                    </Button>
+
                      &nbsp;&nbsp;
-                   <Button bsStyle="warning">Cancelar</Button>
+
+                   <Button bsStyle="warning">
+                      Cancelar
+                   </Button>
                  </p>
             </Col>
           </Row>

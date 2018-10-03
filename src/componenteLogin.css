@@ -1,8 +1,8 @@
 body {
-  background-image: url('./img/login-fondo.jpg');
+  background-image: url('./assets/login-fondo.jpg');
 }
 
 .white-text{
     color: white;
-  
+
   }

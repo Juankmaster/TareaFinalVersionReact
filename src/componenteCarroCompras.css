@@ -2,3 +2,12 @@
   border-bottom: 2px solid black !important;
   margin-bottom: 20px;
 }
+.cuadro{
+  border:1px solid grey;
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+.total{
+  padding-left: -50px;
+}

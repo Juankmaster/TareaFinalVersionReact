@@ -75,7 +75,7 @@ handleChangeCantidad(event){
 }
 
   render() {
-          
+
       var productosCatalogo=[];
 
       for(let products of this.props.prod){

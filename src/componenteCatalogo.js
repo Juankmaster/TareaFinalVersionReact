@@ -19,7 +19,7 @@ class ComponenteCatalogo extends Component {
 
   componentDidMount() {
       ReactDOM.render(
-          <ComponenteProductos/>,
+          <ComponenteProductos />,
           document.getElementById('contenido')
       )
    }
@@ -45,4 +45,4 @@ class ComponenteCatalogo extends Component {
   }
 
 }
-export default ComponenteCatalogo
+export default ComponenteCatalogo;

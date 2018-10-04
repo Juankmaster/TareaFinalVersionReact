@@ -21,11 +21,12 @@ class ComponenteNavegacion extends Component {
   }
 
    carroCompras(){
+
       ReactDOM.render(
         <ComponenteCarroCompras items={this.servicio.productosCarroCompras}/>,
         document.getElementById('contenido')
       )
-   }
+ }
 
    salir(){
      ReactDOM.render(<ComponenteLogin/>,
@@ -33,35 +34,34 @@ class ComponenteNavegacion extends Component {
      );
    }
   render(){
-    console.log(this.servicio.productosCarroCompras)
 
-    return(
+      return(
 
-       <Navbar className="nav">
-               <Navbar.Header>
-                    <Navbar.Brand>
-                      <span className="titulo">Mi Tienda</span>
-                    </Navbar.Brand>
-                </Navbar.Header>
+         <Navbar className="nav">
+                 <Navbar.Header>
+                      <Navbar.Brand>
+                        <span className="titulo">Mi Tienda</span>
+                      </Navbar.Brand>
+                  </Navbar.Header>
 
-                <Nav pullRight >
-                    <NavItem onClick={this.carroCompras}>
-                      <img  className="items" src={carro}  alt="" height="30"/>
-                      { this.servicio.productosCarroCompras.length > 0 &&
-                        <span className="badge badge-danger">
-                          {this.servicio.productosCarroCompras.length}
-                        </span>
-                      }
-                    </NavItem>
+                  <Nav pullRight >
+                      <NavItem onClick={this.carroCompras}>
+                        <img  className="items" src={carro}  alt="" height="30"/>
+                        { this.servicio.productosCarroCompras.length > 0 &&
+                          <span className="badge badge-danger">
+                            {this.servicio.productosCarroCompras.length}
+                          </span>
+                        }
+                      </NavItem>
 
-                    <NavItem onClick={this.salir} >
-                      <img  className="login" src={salir}  alt="" height="30"/>
-                    </NavItem>
-                </Nav>
+                      <NavItem onClick={this.salir} >
+                        <img  className="login" src={salir}  alt="" height="30"/>
+                      </NavItem>
+                  </Nav>
 
-       </Navbar>
+         </Navbar>
 
-    )
+      )
   }
 }
 export default ComponenteNavegacion;

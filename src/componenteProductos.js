@@ -10,7 +10,6 @@ class ComponenteProductos extends Component {
     super(props);
 
       this.state = {
-          saludo:"hola cabron",
           productos: [],
           productosMostrar:[]
 
@@ -53,7 +52,7 @@ class ComponenteProductos extends Component {
 
         .then(response => response.json())
           .then(responseJson => {
-
+              console.log(responseJson)
 
             if (responseJson.error) {
 
@@ -61,9 +60,9 @@ class ComponenteProductos extends Component {
 
             } else {
 
-              const products= [];
+              const products= []
 
-               for ( let product of responseJson) {
+               for(let product  of responseJson) {
 
                 var  produc = new Producto();
                 produc.id = product.id;
@@ -72,14 +71,16 @@ class ComponenteProductos extends Component {
                 produc.precio = product.precio;
                 produc.stock = product.stock;
 
-                products.push(produc);
+                products.push(produc)
 
                 }
+
                 this.setState({
                   productos:products,
                   productosMostrar:products
                 })
                }
+
             })
             .catch(error => {
 
@@ -91,7 +92,7 @@ class ComponenteProductos extends Component {
 
   render(){
 
-
+console.log(this.state.productosMostrar);
     return(
             <Grid>
                 <Row className="buscador">

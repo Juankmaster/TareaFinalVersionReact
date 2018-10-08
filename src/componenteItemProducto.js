@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import   Producto from './modelos/Producto.js';
 import { Row, Col, Button, Thumbnail } from 'react-bootstrap';
 import ComponenteDetalleProductos from './componenteDetalleProductos.js';
-import ComponenteCarroCompras from './componenteCarroCompras.js';
 import ComponentServices from './servicios/componentServices.js';
 
 

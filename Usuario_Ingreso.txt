@@ -1,0 +1,3 @@
+// Credenciales para el login:
+- Usuario:juank@gmail.com
+- Clave:12345

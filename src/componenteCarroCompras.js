@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM  from 'react-dom';
-import {Row, Col, Grid, Button, Thumbnail,ListGroup,ListGroupItem } from 'react-bootstrap';
+import {Row, Col, Grid, Button } from 'react-bootstrap';
 import ComponentServices from './servicios/componentServices';
 import ComponenteCatalogo from './componenteCatalogo';
 import './componenteCarroCompras.css';

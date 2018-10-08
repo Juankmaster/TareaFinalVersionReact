@@ -1,6 +1,6 @@
 body {
   background-image: url('./assets/login-fondo.jpg');
-  text-align: center;
+
 }
 
 .white-text{
@@ -9,4 +9,5 @@ body {
 
   .centrado{
     padding-top:20%;
+    text-align: center;
   }

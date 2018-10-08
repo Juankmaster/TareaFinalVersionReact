@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from  'react-dom';
-import ProductoCarro from  '../modelos/productoCarro.js';
 import ComponenteProductos from  '../componenteProductos.js';
 import Producto from  '../modelos/Producto.js';
 
@@ -46,7 +45,7 @@ limpiarCarroCompras(){
 //Funcion para la actualizacion y pago del productos
 pagarCompra(){
 
-  var contador=parseInt(this.productosCarroCompras.length)
+  var contador = parseInt(this.productosCarroCompras.length)
   for(let item of this.productosCarroCompras) {
 
       var stock=item.stock-item.cant

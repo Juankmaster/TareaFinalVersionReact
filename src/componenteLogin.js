@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ComponenteCatalogo  from './componenteCatalogo.js';
+import { Grid, Row, Col, FormGroup, FormControl,  Alert, Button } from 'react-bootstrap';
 import './componenteLogin.css'
 
 class ComponenteLogin extends Component {
@@ -13,6 +14,7 @@ class ComponenteLogin extends Component {
        clave: '',
        validarCampoUsuario: true,
        validarCampoClave: true,
+       loginValido:true
 
      };
 //Configuracion del scope de las funciones
@@ -53,17 +55,37 @@ class ComponenteLogin extends Component {
      }
 //Pendiente por realizar
      if(validarFormulario){
-        ReactDOM.render(
-          <ComponenteCatalogo/>,
-          document.getElementById('root')
-        );
+
+       fetch("https://tareafinal-8729a.firebaseio.com/usuarios.json")
+          .then((response) => response.json())
+          .then((response) => {
+
+            for(let user of response){
+
+              if(user.email == this.state.usuario && user.clave == this.state.clave) {
+                ReactDOM.render(
+                  <ComponenteCatalogo/>,
+                  document.getElementById('root')
+                );
+
+              }else{
+                this.setState({
+                    loginValido:false,
+                    usuario:'',
+                    clave:''
+                })
+              }
+
+            }
+          })
+          .catch(error =>{
+              console.error(error);
+          })
      }
 
  }
 
   render() {
-
-        var { Grid, Row, Col, FormGroup, FormControl,  Alert, Button } = require('react-bootstrap');
 
     return(
 
@@ -104,6 +126,8 @@ class ComponenteLogin extends Component {
                   </FormGroup>
 
                   <FormGroup>
+                  {!this.state.loginValido &&
+                    <Alert bsStyle="danger">Usuario y/o Clave no validos</Alert>}
                     <Button
                       bsStyle="danger"
                       type="submit"

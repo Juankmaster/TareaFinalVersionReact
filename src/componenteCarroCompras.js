@@ -25,8 +25,8 @@ salir() {
 
 //Funcion para gegistrar el pago de los productos
 pagar(){
-  this.state.productosCarroCompra.pagarCompra(this.props.items);
-  
+  this.state.productosCarroCompra.pagarCompra();
+
 }
 
   render(){

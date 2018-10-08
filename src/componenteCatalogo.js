@@ -8,15 +8,6 @@ import  ComponenteProductos from './componenteProductos.js';
 
 class ComponenteCatalogo extends Component {
 
-  constructor(props) {
-      super(props)
-
-      this.state = {
-
-      }
-  }
-
-
   componentDidMount() {
       ReactDOM.render(
           <ComponenteProductos />,

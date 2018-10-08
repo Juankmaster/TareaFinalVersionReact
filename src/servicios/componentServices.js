@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from  'react-dom';
 import ProductoCarro from  '../modelos/productoCarro.js';
 import ComponenteProductos from  '../componenteProductos.js';
-import ReactDOM from  'react-dom';
 import Producto from  '../modelos/Producto.js';
 
 
@@ -18,9 +18,7 @@ export default class ComponentServices {
       if (this.instance == null) {
           this.instance = new ComponentServices();
       }
-
-      return this.instance;
-
+          return this.instance;
   }
 //Funcion para agregar los productos al carro de compras con sus cantidades
 addCarro(items, cantidad) {
@@ -67,17 +65,22 @@ pagarCompra(){
                method:'put',
                body:datos
              }).then(response => response.json())
-                  .then(responseJson => {
-                    console.log(responseJson)
+                  .then(response => {
+                    console.log(response)
                     console.log(contador)
+                    if(contador === 0){
+                        this.limpiarCarroCompras();
+                        ReactDOM.render(<ComponenteProductos />,
+                          document.getElementById('contenido')
+                        )
+                    }
                   })
                   .catch(error => {
 
                       console.error(error);
 
                   })
-                  contador--;
-                  console.log(contador)
+                      contador--;
           }
 
 

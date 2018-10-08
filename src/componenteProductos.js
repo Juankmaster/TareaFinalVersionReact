@@ -51,10 +51,9 @@ class ComponenteProductos extends Component {
     fetch('https://tareafinal-8729a.firebaseio.com/productos.json')
 
         .then(response => response.json())
-          .then(responseJson => {
-              console.log(responseJson)
+          .then(response => {
 
-            if (responseJson.error) {
+            if (response.error) {
 
                  alert("Error al Cargar Productos")
 
@@ -62,7 +61,7 @@ class ComponenteProductos extends Component {
 
               const products= []
 
-               for(let product  of responseJson) {
+               for(let product  of response) {
 
                 var  produc = new Producto();
                 produc.id = product.id;
@@ -92,7 +91,6 @@ class ComponenteProductos extends Component {
 
   render(){
 
-console.log(this.state.productosMostrar);
     return(
             <Grid>
                 <Row className="buscador">

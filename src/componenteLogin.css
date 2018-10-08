@@ -1,8 +1,12 @@
 body {
   background-image: url('./assets/login-fondo.jpg');
+  text-align: center;
 }
 
 .white-text{
     color: white;
+  }
 
+  .centrado{
+    padding-top:20%;
   }

@@ -70,11 +70,11 @@ class ComponenteLogin extends Component {
       <div>
         <Grid>
 
-          <Row className=" justify-content-center">
+          <Row className="centrado">
 
             <Col lg={6} xsOffset={3}>
 
-              <h1 className="text-center white-text ">Inicio de Sesión</h1>
+              <h1 className=" white-text ">Inicio de Sesión</h1>
 
               <form className="form" onSubmit={this.handleSubmit}>
 

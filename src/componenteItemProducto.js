@@ -68,7 +68,17 @@ handleChangeCantidad(event){
 
             }else{
 
+              if( this.state.cantidadProducto > items[0]['stock'] ){
+                  this.setState({
+                    cantidadProducto:''
+                  })
+                alert("Cantidad mayor al Stock ")
+
+              }else{
+
                 this.state.carroCompras.addCarro( items, this.state.cantidadProducto)
+              }
+
             }
         }
 }

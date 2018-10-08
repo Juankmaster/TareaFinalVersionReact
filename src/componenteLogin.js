@@ -53,7 +53,7 @@ class ComponenteLogin extends Component {
      }else{
         this.setState({validarCampoClave:true})
      }
-//Pendiente por realizar
+//validacion de usuarios en la base de datos
      if(validarFormulario){
 
        fetch("https://tareafinal-8729a.firebaseio.com/usuarios.json")
@@ -75,7 +75,6 @@ class ComponenteLogin extends Component {
                     clave:''
                 })
               }
-
             }
           })
           .catch(error =>{

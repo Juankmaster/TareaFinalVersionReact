@@ -21,11 +21,15 @@ class ComponenteNavegacion extends Component {
   }
 
    carroCompras(){
+     if(this.servicio.productosCarroCompras.length == 0){
+       alert("No Tiene Productos Agregados en el Carro")
+     }else{
+       ReactDOM.render(
+         <ComponenteCarroCompras items={this.servicio.productosCarroCompras}/>,
+         document.getElementById('contenido')
+       )
 
-      ReactDOM.render(
-        <ComponenteCarroCompras items={this.servicio.productosCarroCompras}/>,
-        document.getElementById('contenido')
-      )
+     }
  }
 
    salir(){
